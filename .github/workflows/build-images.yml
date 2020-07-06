@@ -1,10 +1,12 @@
 name: Build images
 
 on:
-  # does not work with forks since the jobs will try to push to the target
-  # registry but run only with the privileges of the fork.
+  # on pull_request does not work with forks since the jobs will try to push
+  # to the target registry but run only with the privileges of the fork.
   #- pull_request
-  - push
+  push:
+    tags:
+      - 'v*'
 
 jobs:
   image:
